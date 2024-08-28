@@ -1,0 +1,24 @@
+wwwRoot : wwwRoot est la racine du répertoire sur le serveur où les fichiers du site web sont stockés
+et accessibles par les utilisateurs.
+
+Properties: Est un dossier spécial qui contient des fichiers de configuration et des métadonnées du projet. 
+
+Model: Le modèle dans cette architecture est couramment la représentation des entités qui sont manipulées par votre application. Une entité peut, par exemple, être un Etudiant.
+L’entité Etudiant doit disposer du nécessaire pour obtenir les informations sur un étudiant (nom, prénom, sexe, etc.).
+
+Vue : La vue va regrouper toute la logique de présentation. Il s’agit en effet d’une page Web.
+La vue contient le code HTML, CSS et JavaScript nécessaire pour afficher les données selon la représentation 
+voulue par le développeur.
+
+Controlleur : Le contrôleur représente un élément clé du patron de conception MVC. C’est au sein du contrôleur que les 
+traitements des données sont effectués.
+En effet, suivant les besoins de l’application, le contrôleur va utiliser le modèle pour effectuer des traitements précis, 
+ensuite sélectionner la vue adéquate et passer le modèle à cette dernière.
+
+AppSettings.json: Le fichier appSettings.json est un fichier de configuration utilisé dans les applications ASP.NET Core 
+pour stocker des paramètres d'application, comme les chaînes de connexion, les clés API, et d'autres paramètres personnalisés,
+de manière structurée en JSON.
+
+Program.cs: Le fichier Program.cs est le point d'entrée principal d'une application .NET, où le programme commence à s'exécuter;
+il contient généralement la méthode Main, qui initialise l'application, configure les services, et démarre le serveur ou 
+l'application elle-même.
