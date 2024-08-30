@@ -20,10 +20,29 @@ namespace WebApplication4.Controllers
         }
 
         // GET: Books
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var books = await _context.Books.ToListAsync();
-            return View(books);
+            // Stocker le filtre de recherche dans ViewData pour réutilisation dans la vue
+            ViewData["CurrentFilter"] = searchString;
+
+            // Obtenir la liste complète des livres
+            var books = from b in _context.Books
+                select b;
+
+            // Si une recherche est effectuée, filtrer les résultats
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                books = books.Where(b => b.Title.Contains(searchString) || b.Author.Contains(searchString));
+            }
+            
+            // Si la requête est AJAX, retourner une vue partielle avec les résultats filtrés
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_BookListPartial", books.ToList());
+            }
+
+            // Retourner les résultats filtrés à la vue
+            return View(books.ToList());
         }
 
         // GET: Books/Details/5
